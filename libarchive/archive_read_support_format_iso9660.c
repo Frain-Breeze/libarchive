@@ -900,8 +900,9 @@ isPVD(struct iso9660 *iso9660, const unsigned char *h)
 		return (0);
 
 	/* File structure version must be 1 for ISO9660/ECMA119. */
-	if (h[PVD_file_structure_version_offset] != 1)
-		return (0);
+    //HACK: disabled this to allow UMD dumps to get through normally
+	//if (h[PVD_file_structure_version_offset] != 1)
+	//	return (0);
 
 	/* Location of Occurrence of Type L Path Table must be
 	 * available location,

@@ -2168,6 +2168,11 @@ iso9660_free(struct archive_write *a)
 static void
 get_system_identitier(char *system_id, size_t size)
 {
+    //HACK: change system ID to be "PSP GAME" since it won't let us change it manually
+    strncpy(system_id, "PSP GAME", size - 1);
+    system_id[size-1] = '\0';
+    return;
+#if false
 #if defined(HAVE_SYS_UTSNAME_H)
 	struct utsname u;
 
@@ -2180,6 +2185,7 @@ get_system_identitier(char *system_id, size_t size)
 #else
 	strncpy(system_id, "Unknown", size-1);
 	system_id[size-1] = '\0';
+#endif
 #endif
 }
 
